@@ -4,4 +4,4 @@ const val API_URL = "https://api.qantas.com/"
 
 const val DATABASE_NAME = "Qantas"
 
-const val  MOVIE_DETAILS = "AirportDetails"
+const val  AIRPORT_DETAILS = "AirportDetails"

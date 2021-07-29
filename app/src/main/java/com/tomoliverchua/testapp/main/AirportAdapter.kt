@@ -11,6 +11,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.tomoliverchua.testapp.R
+import com.tomoliverchua.testapp.common.AIRPORT_DETAILS
+import com.tomoliverchua.testapp.details.DetailsActivity
 import com.tomoliverchua.testapp.models.AirpotDetailsEntity
 import com.tomoliverchua.testapp.repoCallback.AiportDetailsCallback
 import kotlinx.android.synthetic.main.listview_item.view.*
@@ -72,6 +74,19 @@ class AirportAdapter (private val routes: MutableList<AirpotDetailsEntity>, cont
             AirportName.text = airpotDetailsEntity.airportName
             Country.text = airpotDetailsEntity.countryName
             itemId.text = airpotDetailsEntity.id.toString()
+
+            // If the item is selected update its image source
+            if (selectedPosition == adapterPosition) {
+                rootContainer.setBackgroundResource(R.drawable.cardview_selected_bg)
+
+                var intent = Intent(context, DetailsActivity::class.java)
+                intent.putExtra(AIRPORT_DETAILS, airpotDetailsEntity)
+                context.startActivity(intent)
+
+            }
+            else{
+                rootContainer.setBackgroundResource(R.drawable.cardview_bg)
+            }
 
             rootContainer.setOnClickListener {
                 selectedPosition = adapterPosition

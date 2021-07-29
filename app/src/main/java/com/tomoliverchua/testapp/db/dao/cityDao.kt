@@ -13,7 +13,7 @@ interface cityDao {
     fun getCityDetails(): LiveData<MutableList<CityEntity>>
 
     @Query("SELECT * FROM tbl_city where id = :AirportId ")
-    fun getCityDetailsById(AirportId : Int): LiveData<CityEntity>
+    fun getCityDetailsById(AirportId : Int?): LiveData<CityEntity>
 
     @Insert
     fun saveCityDetails(cityEntity: CityEntity)

@@ -12,7 +12,7 @@ interface countryDao {
     fun getCountryDetails(): LiveData<MutableList<CountryEntity>>
 
     @Query("SELECT * FROM tbl_country where id = :AirportId ")
-    fun getCountryDetailsById(AirportId : Int): LiveData<CountryEntity>
+    fun getCountryDetailsById(AirportId : Int?): LiveData<CountryEntity>
 
     @Insert
     fun saveCountryDetails(countryEntity: CountryEntity)

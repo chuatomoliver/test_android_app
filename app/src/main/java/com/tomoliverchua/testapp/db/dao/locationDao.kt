@@ -12,7 +12,7 @@ interface locationDao {
     fun getLocationDetails(): LiveData<MutableList<LocationEntity>>
 
     @Query("SELECT * FROM tbl_location where id = :AirportId ")
-    fun getLocationDetailsById(AirportId : Int): LiveData<LocationEntity>
+    fun getLocationDetailsById(AirportId : Int?): LiveData<LocationEntity>
 
     @Insert
     fun saveLocationDetails(locationEntity: LocationEntity)

@@ -13,7 +13,7 @@ interface regionDao {
     fun getRegionDetails(): LiveData<MutableList<RegionEntity>>
 
     @Query("SELECT * FROM tbl_region where id = :AirportId ")
-    fun getRegionDetailsById(AirportId : Int): LiveData<RegionEntity>
+    fun getRegionDetailsById(AirportId : Int?): LiveData<RegionEntity>
 
     @Insert
     fun saveRegionDetails(regionEntity: RegionEntity)

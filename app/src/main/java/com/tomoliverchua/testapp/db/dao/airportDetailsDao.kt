@@ -13,7 +13,7 @@ interface airportDetailsDao {
 
 
     @Query("SELECT * FROM tbl_airport_details where id = :AirportId ")
-    fun getAirportDetailsById(AirportId : Int): LiveData<AirpotDetailsEntity>
+    fun getAirportDetailsById(AirportId : Int?): LiveData<AirpotDetailsEntity>
 
     @Insert
     fun saveAirportDetails(airportDetails: AirpotDetailsEntity)

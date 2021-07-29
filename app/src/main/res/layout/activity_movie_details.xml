@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MovieDetails.MovieDetailsActivity">
+    tools:context=".details.DetailsActivity">
 
 
     <include
@@ -23,292 +23,228 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/cardview_bg"
-        android:layout_margin="20dp">
-
-        <ImageView
-            android:id="@+id/img_artWorkUrl100"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
-
-            android:layout_marginBottom="10dp"></ImageView>
-
         <TextView
-            android:id="@+id/tv_movie_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="title"
+            android:text=" Airport Details"
             android:gravity="center"
-            android:textColor="@color/black"/>
-
-    </LinearLayout>
-
-
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="100dp"
-          android:orientation="horizontal"
-          android:layout_margin="20dp"
-          android:background="@drawable/cardview_bg">
-
-          <ImageView
-              android:id="@+id/img_artWorkUrl60"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:src="@mipmap/ic_launcher"
-              android:layout_margin="10dp"></ImageView>
-
-          <ImageView
-              android:id="@+id/img_artWorkUrl30"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:src="@mipmap/ic_launcher"
-             android:layout_margin="10dp"></ImageView>
-
-      </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@drawable/cardview_bg"
-            android:layout_margin="20dp">
-        <TextView
-            android:id="@+id/lbl_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Type :"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:id="@+id/tv_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test" />
-        <TextView
-            android:id="@+id/tv_advisory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            android:layout_marginBottom="40dp"/>
-
-        </LinearLayout>
-
-
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"/>
 <!--        Details-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@drawable/cardview_bg"
-            android:layout_margin="20dp">
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Airport Code"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Airport Name"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="City Name"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="City Code"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Country Code"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Country Name"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="longitiude desc"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="lattitude desc"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="longitude"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="latitude"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Region Code"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Region Name"
+                    android:textSize="14sp"
+                    />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Details"
-            android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/data1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/data2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
 
-        <TextView
-            android:id="@+id/data3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
 
-        <TextView
-            android:id="@+id/data4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
 
-        <TextView
-            android:id="@+id/data5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            android:text="text"
-            />
+                <TextView
+                    android:id="@+id/data1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Text"
+                    android:textSize="14sp"
+                    />
 
-        <TextView
-            android:id="@+id/data6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
+                <TextView
+                    android:id="@+id/data2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:textSize="14sp"
+                    />
 
-        <TextView
-            android:id="@+id/data7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
+                <TextView
+                    android:id="@+id/data3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
 
-        <TextView
-            android:id="@+id/data8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
+                    android:textSize="14sp"
+                    />
 
-        <TextView
-            android:id="@+id/data9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
+                <TextView
+                    android:id="@+id/data4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:textSize="14sp"
+                    />
 
-        <TextView
-            android:id="@+id/data10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
+                <TextView
+                    android:id="@+id/data5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="text"
+                    />
 
-        <TextView
-            android:id="@+id/data11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
+                <TextView
+                    android:id="@+id/data6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/data7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/data8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/data9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/data10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/data11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/data12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:textSize="14sp"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
 
 
-<!--            Descriptions-->
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@drawable/cardview_bg"
-            android:layout_margin="20dp">
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Back"/>
 
-        <TextView
-            android:id="@+id/lblDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="16sp"
-            android:text="Short Desc:"/>
 
-        <TextView
-            android:id="@+id/tv_description_short"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Links"/>
-
-        <TextView
-            android:id="@+id/longDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="16sp"
-            android:text="Long Desc:"/>
-
-        <TextView
-            android:id="@+id/tv_description_long"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Links"/>
-
-        </LinearLayout>
-
-<!--        Links to website-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@drawable/cardview_bg"
-            android:layout_margin="20dp">
-
-        <TextView
-            android:id="@+id/url1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="16sp"
-            android:text="Links"/>
-
-        <TextView
-            android:id="@+id/tv_url1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
-
-        <TextView
-            android:id="@+id/tv_url2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
-
-        <TextView
-            android:id="@+id/tv_url3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:textSize="14sp"
-            />
-        </LinearLayout>
 
     </LinearLayout>
 
