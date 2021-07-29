@@ -22,12 +22,15 @@ class MainActivityViewModel: ViewModel(),KoinComponent {
     fun getDataResponse(): LiveData<ArrayList<DataResponse.AirpotDetails>> = dataResponse
 
     fun getAirportDetails() {
+        isLoading.postValue(true)
         airportRepo.getAirportDetails(object : AiportDetailsCallback.OnAirportDetailsCallback {
             override fun onSuccess(AiportDetails: DataResponse) {
                 dataResponse.value = AiportDetails
+                isLoading.postValue(false)
             }
             override fun onFail(errMessage: String) {
                 Log.d("test","error")
+                isLoading.postValue(true)
             }
         })
     }

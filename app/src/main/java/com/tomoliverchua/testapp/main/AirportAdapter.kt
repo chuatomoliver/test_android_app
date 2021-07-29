@@ -1,68 +1,77 @@
 package com.tomoliverchua.testapp.main
 
 import android.content.Context
-import android.content.Intent
+import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.tomoliverchua.testapp.R
-import com.tomoliverchua.testapp.common.AIRPORT_DETAILS
-import com.tomoliverchua.testapp.details.DetailsActivity
 import com.tomoliverchua.testapp.models.AirpotDetailsEntity
-import com.tomoliverchua.testapp.repoCallback.AiportDetailsCallback
+import com.tomoliverchua.testapp.repositories.AirportDetailRepository
 import kotlinx.android.synthetic.main.listview_item.view.*
 
-class AirportAdapter (private val routes: MutableList<AirpotDetailsEntity>, context: Context) :
-    RecyclerView.Adapter<AirportAdapter.ViewHolder>() {
-
-    private var selectRouteCallback: OnSelectRouteCallback? = null
+class AirportAdapter(
+    var selectRouteCallback: OnSelectRouteCallback? = null
+) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var selectedPosition = -1
-    private var context: Context = context
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.listview_item, parent, false)
-        return ViewHolder(view)
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AirpotDetailsEntity>() {
+
+        override fun areItemsTheSame(
+            oldItem: AirpotDetailsEntity,
+            newItem: AirpotDetailsEntity
+        ): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(
+            oldItem: AirpotDetailsEntity,
+            newItem: AirpotDetailsEntity
+        ): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+    }
+    private val differ = AsyncListDiffer(this, DIFF_CALLBACK)
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
+        return AirportViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.listview_item,
+                parent,
+                false
+            )
+        )
     }
 
-    override fun getItemCount(): Int = routes.size
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(routes[position])
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is AirportViewHolder -> {
+                holder.bind(differ.currentList[position])
+            }
+        }
     }
 
-//    fun updateData(newDataSet: List<MovieDetailsEntity>) {
-//        routes.clear()
-//        routes.addAll(newDataSet)
-//        notifyDataSetChanged()
-//    }
-//
-//    fun addData(newDataSet: List<MovieDetailsEntity>){
-//        routes.addAll(newDataSet)
-//        notifyDataSetChanged()
-//    }
-
-    fun updateData(newDataSet: List<AirpotDetailsEntity>) {
-        routes.clear()
-        routes.addAll(newDataSet)
-        notifyDataSetChanged()
+    override fun getItemCount(): Int {
+        return differ.currentList.size
     }
 
-    fun setSelectRouteCallback(callback: OnSelectRouteCallback) {
-        selectRouteCallback = callback
+    fun submitList(list: List<AirpotDetailsEntity>) {
+        differ.submitList(list)
     }
 
-    fun getSelectedRoute(): AirpotDetailsEntity? {
-        if (selectedPosition < 0) return null
-        return routes[selectedPosition]
-    }
-
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class AirportViewHolder
+    constructor(
+        itemView: View
+    ) : RecyclerView.ViewHolder(itemView) {
 
         private val rootContainer: LinearLayout = itemView.rootContainer
         private val AirportName: TextView = itemView.tvAirportName
@@ -78,26 +87,19 @@ class AirportAdapter (private val routes: MutableList<AirpotDetailsEntity>, cont
             // If the item is selected update its image source
             if (selectedPosition == adapterPosition) {
                 rootContainer.setBackgroundResource(R.drawable.cardview_selected_bg)
-
-                var intent = Intent(context, DetailsActivity::class.java)
-                intent.putExtra(AIRPORT_DETAILS, airpotDetailsEntity)
-                context.startActivity(intent)
-
             }
             else{
                 rootContainer.setBackgroundResource(R.drawable.cardview_bg)
             }
 
             rootContainer.setOnClickListener {
+                Log.d("test123", "Click data : ${airpotDetailsEntity}")
                 selectedPosition = adapterPosition
                 notifyDataSetChanged()
-
-                selectRouteCallback?.onSelect(AirpotDetailsEntity())
+                selectRouteCallback?.onSelect(airpotDetailsEntity)
             }
         }
-
     }
-
 }
 
 interface OnSelectRouteCallback {

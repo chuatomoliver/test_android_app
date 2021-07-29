@@ -1,6 +1,7 @@
 package com.tomoliverchua.testapp.main
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,20 +16,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.tomoliverchua.testapp.models.DataResponse
 import com.google.android.material.navigation.NavigationView
+import com.tomoliverchua.testapp.common.AIRPORT_DETAILS
+import com.tomoliverchua.testapp.details.DetailsActivity
+import com.tomoliverchua.testapp.models.AirpotDetailsEntity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_nav.view.*
 import kotlin.collections.ArrayList
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    OnSelectRouteCallback {
 
-    private lateinit var mainActViewModel : MainActivityViewModel
+    private lateinit var mainActViewModel: MainActivityViewModel
     private lateinit var adapter: AirportAdapter
     private val context: Context = this
-    private val airportList: MutableList<DataResponse.AirpotDetails> = mutableListOf()
 
     private lateinit var progressDialog: MaterialDialog
-    private lateinit var confirmDialog: MaterialDialog
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,25 +39,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mainActViewModel = ViewModelProviders.of(this)[MainActivityViewModel::class.java]
 
         setupDialog()
-        subscribeUi()
         initView()
         setupList()
+        subscribeUi()
     }
-
 
 
     // for livedata
     private fun subscribeUi() {
         mainActViewModel.getAirportDetails()
-
-        mainActViewModel.getDataResponse().observe(this, Observer { airportDetailsList ->
-            airportDetailsList?.let{
-                it.toList()
-                for (airportResult in airportDetailsList){
-                    airportList.add(airportResult)
-                }
-            }
-        })
 
         mainActViewModel.getIsLoading().observe(this, Observer<Boolean> { isLoading ->
             isLoading?.let { loading ->
@@ -65,53 +57,29 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         mainActViewModel.getDbAirportDetails().observe(this, Observer {
             it.let {
-                adapter.updateData(it)
+                adapter.submitList(it)
             }
         })
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private fun setupList() {
         val layoutManager = LinearLayoutManager(this)
-        rv_moview_list.layoutManager = layoutManager
+        rv_airport_list.layoutManager = layoutManager
 
-        rv_moview_list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
-        adapter = AirportAdapter(mutableListOf(), context)
+        rv_airport_list.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        adapter = AirportAdapter( this)
 
 
         // add AddOnScrollListener
-        rv_moview_list.adapter = adapter
-
-        val selectMovie = adapter.getSelectedRoute()
-        selectMovie?.let {movie ->
-            mainActViewModel.getDbMovieById(movie.id!!.toInt()).observe(this, Observer {
-                it.let{movieDetailsEntity ->
-
-                }
-            })
-        }
-
+        rv_airport_list.adapter = adapter
 
     }
 
 
-
-        private fun setupDialog() {
-        context?.let { ctx ->
+    private fun setupDialog() {
+        context.let { ctx ->
             progressDialog = MaterialDialog.Builder(ctx)
                 .title("Loading")
                 .content("Starting your journey please wait")
@@ -122,8 +90,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     // for toolbar
-    fun initView(){
-        toolbar.navigation_menu.setOnClickListener{
+    fun initView() {
+        toolbar.navigation_menu.setOnClickListener {
             drawer_layout.openDrawer()
         }
     }
@@ -131,5 +99,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         drawer_layout.closeDrawer(Gravity.START)
         return false
+    }
+
+    override fun onSelect(route: AirpotDetailsEntity) {
+        var intent = Intent(context, DetailsActivity::class.java)
+        intent.putExtra(AIRPORT_DETAILS, route)
+        context.startActivity(intent)
     }
 }
