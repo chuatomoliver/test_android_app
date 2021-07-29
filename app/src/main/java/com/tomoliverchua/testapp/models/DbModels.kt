@@ -1,8 +1,6 @@
 package com.tomoliverchua.testapp.models
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import java.io.Serializable
 
 @Entity(tableName = "tbl_airport_details")
@@ -14,7 +12,9 @@ data class AirpotDetailsEntity(
     @ColumnInfo(name = "internationalAirport")val internationalAirport: Boolean = false,
     @ColumnInfo(name = "onlineIndicator")val onlineIndicator: Boolean = false,
     @ColumnInfo(name = "preferredInternationalAirportCode")val preferredInternationalAirportCode: String = "",
-    @ColumnInfo(name = "regionalAirport") val regionalAirport: Boolean = false
+    @ColumnInfo(name = "regionalAirport") val regionalAirport: Boolean = false,
+    @ColumnInfo(name = "countryCode") val countryCode: String = "",
+    @ColumnInfo(name = "countryName") val countryName: String = ""
 ):Serializable{
     @PrimaryKey(autoGenerate = true)
     var id: Long? = null
@@ -61,6 +61,8 @@ data class RegionEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Long? = null
 }
+
+
 
 
 

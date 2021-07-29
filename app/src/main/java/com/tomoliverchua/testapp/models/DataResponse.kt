@@ -27,7 +27,9 @@ class DataResponse : ArrayList<DataResponse.AirpotDetails>(){
                 internationalAirport,
                 onlineIndicator,
                 preferredInternationalAirportCode,
-                regionalAirport
+                regionalAirport,
+                country.countryName,
+                country.countryCode
             )
         }
 

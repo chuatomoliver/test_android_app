@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.tomoliverchua.testapp.models.AirpotDetailsEntity
 import com.tomoliverchua.testapp.models.DataResponse
 import com.tomoliverchua.testapp.repoCallback.AiportDetailsCallback
 import com.tomoliverchua.testapp.repositories.AirportDetailRepository
@@ -13,6 +14,9 @@ import org.koin.core.inject
 class MainActivityViewModel: ViewModel(),KoinComponent {
 
     private val airportRepo : AirportDetailRepository by inject()
+
+    private val isLoading = MutableLiveData<Boolean>()
+    fun getIsLoading(): LiveData<Boolean> = isLoading
 
     private var dataResponse = MutableLiveData<ArrayList<DataResponse.AirpotDetails>>()
     fun getDataResponse(): LiveData<ArrayList<DataResponse.AirpotDetails>> = dataResponse
@@ -27,4 +31,15 @@ class MainActivityViewModel: ViewModel(),KoinComponent {
             }
         })
     }
+
+
+    fun startTrip() {
+        isLoading.value = true
+
+    }
+
+    fun getDbAirportDetails() : LiveData<MutableList<AirpotDetailsEntity>> = airportRepo.getDBAirportDetails()
+    fun getDbMovieById(airportId: Int) : LiveData<AirpotDetailsEntity> = airportRepo.getDBAirportDetailsById(airportId)
+
+
 }

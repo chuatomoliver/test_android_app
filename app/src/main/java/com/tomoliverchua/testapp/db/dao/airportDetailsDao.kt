@@ -1,10 +1,7 @@
 package com.tomoliverchua.testapp.db.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.tomoliverchua.testapp.models.AirpotDetailsEntity
 
 
@@ -13,6 +10,7 @@ interface airportDetailsDao {
 
     @Query("SELECT * FROM tbl_airport_details")
     fun getAirportDetails(): LiveData<MutableList<AirpotDetailsEntity>>
+
 
     @Query("SELECT * FROM tbl_airport_details where id = :AirportId ")
     fun getAirportDetailsById(AirportId : Int): LiveData<AirpotDetailsEntity>

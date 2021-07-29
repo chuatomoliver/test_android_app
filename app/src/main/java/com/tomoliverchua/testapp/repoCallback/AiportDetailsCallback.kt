@@ -7,4 +7,9 @@ interface AiportDetailsCallback {
         fun onSuccess(dataResponse: DataResponse)
         fun onFail(errMessage: String)
     }
+
+    interface OnUpdateAirportDetailsStatusCallback {
+        fun onSuccess()
+        fun onFail()
+    }
 }

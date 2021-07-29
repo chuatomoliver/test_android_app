@@ -40,12 +40,13 @@ class AirportDetailRepository(context: Context) : KoinComponent {
                         response.body()?.let {
                             callback.onSuccess(it)
                             it.forEach{result->
-                                executors.diskIO().execute {
-                                    CountryDao.saveCountryDetails(result.country.toCountry())
+                                    executors.diskIO().execute {
+
                                     AirportDetailsDao.saveAirportDetails(result.toAirportDetails())
                                     CityDao.saveCityDetails(result.city.toCityDetails())
                                     LocationDao.saveLocationDetails(result.location.toLocation())
                                     RegionDao.saveRegionDetails(result.region.toRegion())
+                                    CountryDao.saveCountryDetails(result.country.toCountry())
                                 }
                             }
                         }
@@ -53,7 +54,6 @@ class AirportDetailRepository(context: Context) : KoinComponent {
                         return
                     }
                 }
-
                 override fun onFailure(call: Call<DataResponse>, t: Throwable) {
                     Log.d("API_CALL", t.message)
                     callback.onFail("Connection Error!")
@@ -62,11 +62,21 @@ class AirportDetailRepository(context: Context) : KoinComponent {
             })
         }
 
+//        fun startAirportDetails(callback: AiportDetailsCallback.OnUpdateAirportDetailsStatusCallback) {
+//            executors.diskIO().execute {
+//            val trip = tripDao.getCurrentTrip()
+//            trip.status = TripStatus.IN_TRANSIT
+//            updateTrip(trip, callback)
+//         }
+//        }
+
+
+
         // get all movie details
-        fun getAirportDetails(): LiveData<MutableList<AirpotDetailsEntity>> = AirportDetailsDao.getAirportDetails()
+        fun getDBAirportDetails(): LiveData<MutableList<AirpotDetailsEntity>> = AirportDetailsDao.getAirportDetails()
 
 
         // get movie by ref. Id
-        fun getDbMovieById(movieId: Int): LiveData<AirpotDetailsEntity> = AirportDetailsDao.getAirportDetailsById(movieId)
+        fun getDBAirportDetailsById(movieId: Int): LiveData<AirpotDetailsEntity> = AirportDetailsDao.getAirportDetailsById(movieId)
 
 }
