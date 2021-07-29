@@ -4,16 +4,20 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.tomoliverchua.testapp.common.DATABASE_NAME
+import com.tomoliverchua.testapp.db.dao.airportDetailsDao
+import com.tomoliverchua.testapp.models.*
 
 
 @Database(
-    entities = [MovieDetailsEntity::class],
+    entities = [AirpotDetailsEntity::class, CityEntity::class, CountryEntity::class, LocationEntity::class, RegionEntity::class],
     version = 1,
     exportSchema = false
 )
  abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun movieDao(): MovieDao
+    abstract fun airportDetailsDao(): airportDetailsDao
+
 
     companion object {
 

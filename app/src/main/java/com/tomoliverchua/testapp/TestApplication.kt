@@ -1,6 +1,7 @@
 package com.tomoliverchua.testapp
 
 import android.app.Application
+import com.tomoliverchua.testapp.common.AppExecutors
 import com.tomoliverchua.testapp.repositories.AirportDetailRepository
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -15,10 +16,10 @@ class TestApplication: Application() {
 
     private fun setupKoin() {
         val modules = module {
-//            single(named("appDatabase")) { AppDatabase.getInstance(get()) }
+            single(named("appDatabase")) { AppDatabase.getInstance(get()) }
             single { AirportDetailRepository(get()) }
-//            single { AppDatabase.getInstance(get()).movieDao() }
-//            single { AppExecutors() }
+            single { AppDatabase.getInstance(get()).airportDetailsDao() }
+            single { AppExecutors() }
         }
 
         startKoin {

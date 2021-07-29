@@ -3,4 +3,43 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="police">#27395F</color>
+    <color name="philamlife">#D31145</color>
+    <color name="philamlife_light">#D31145</color>
+    <color name="blue">#3C86E2</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#C8C8C8</color>
+    <color name="black">#292929</color>
+    <color name="brown">#2E251F</color>
+    <color name="darkbrown">#1C1512</color>
+    <color name="red">#D84546</color>
+    <color name="astronutblue">#083C52</color>
+    <color name="green">#009255</color>
+    <color name="lightbrown">#4E4040</color>
+    <color name="lightred">#C47D7F</color>
+    <color name="purple">#612081</color>
+    <color name="darkred">#CF4E2F</color>
+    <color name="brownlight">#E6C99D</color>
+    <color name="browndark">#C1733C</color>
+    <color name="darkblue">#174481</color>
+    <color name="tabactive2">#2680BC</color>
+    <color name="darkorange">#D75124</color>
+    <color name="lightgreen">#49C163</color>
+    <color name="maroon">#8c1b04</color>
+    <color name="skydark">#168291</color>
+    <color name="skylight">#29A0B0</color>
+    <color name="darkmaroon">#620300</color>
+    <color name="tometored">#CE4243</color>
+    <color name="matebrown">#4E4040</color>
+    <color name="cream">#E4806E</color>
+    <color name="skylight1">#85e0ec</color>
+
+    <color name="txt_color">#1f2833</color>
+
+    <color name="active_color">#dd3e3e</color>
+    <color name="inactive_color">#a0a0a0</color>
+
+    <color name="colorGray">#495C67</color>
+    <color name="colorBackroundWhite">#f0f2ea</color>
 </resources>

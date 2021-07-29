@@ -15,7 +15,6 @@ data class AirpotDetailsEntity(
     @ColumnInfo(name = "onlineIndicator")val onlineIndicator: Boolean = false,
     @ColumnInfo(name = "preferredInternationalAirportCode")val preferredInternationalAirportCode: String = "",
     @ColumnInfo(name = "regionalAirport") val regionalAirport: Boolean = false
-
 ):Serializable{
     @PrimaryKey(autoGenerate = true)
     var id: Long? = null
@@ -54,7 +53,7 @@ data class LocationEntity(
     var id: Long? = null
 }
 
-@Entity(tableName = "tbl_country")
+@Entity(tableName = "tbl_region")
 data class RegionEntity(
     @ColumnInfo(name = "regionCode") val regionCode: String = "",
     @ColumnInfo(name = "regionName") val regionName: String = ""

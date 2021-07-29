@@ -1,5 +1,7 @@
 package com.tomoliverchua.testapp.models
 
+import com.tomoliverchua.testapp.repositories.AirportDetailRepository
+
 
 class DataResponse : ArrayList<DataResponse.AirpotDetails>(){
     data class AirpotDetails(
@@ -16,6 +18,19 @@ class DataResponse : ArrayList<DataResponse.AirpotDetails>(){
         val region: Region = Region(),
         val regionalAirport: Boolean = false
     ) {
+        fun toAirportDetails() : AirpotDetailsEntity{
+            return AirpotDetailsEntity(
+                airportCode,
+                airportName,
+                domesticAirport,
+                eticketableAirport,
+                internationalAirport,
+                onlineIndicator,
+                preferredInternationalAirportCode,
+                regionalAirport
+            )
+        }
+
         data class City(
             val cityCode: String = "",
             val cityName: String = "",
