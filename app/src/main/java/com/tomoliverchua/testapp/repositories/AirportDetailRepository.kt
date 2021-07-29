@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import com.tomoliverchua.testapp.apiservices.AirportService
 import com.tomoliverchua.testapp.apiservices.APIClient
 import com.tomoliverchua.testapp.common.AppExecutors
-import com.tomoliverchua.testapp.db.dao.airportDetailsDao
+import com.tomoliverchua.testapp.db.dao.*
 import com.tomoliverchua.testapp.models.AirpotDetailsEntity
 import com.tomoliverchua.testapp.models.DataResponse
 import com.tomoliverchua.testapp.repoCallback.AiportDetailsCallback
@@ -19,9 +19,14 @@ import retrofit2.Response
 
 class AirportDetailRepository(context: Context) : KoinComponent {
 
-
         var apiServices: AirportService = APIClient.client!!.create(AirportService::class.java)
+
         private val AirportDetailsDao: airportDetailsDao by inject()
+        private val CityDao: cityDao by inject ()
+        private val CountryDao: countryDao by inject ()
+        private val LocationDao: locationDao by inject ()
+        private val RegionDao: regionDao by inject()
+
         private val executors: AppExecutors by inject()
 
 
@@ -36,9 +41,12 @@ class AirportDetailRepository(context: Context) : KoinComponent {
                             callback.onSuccess(it)
                             it.forEach{result->
                                 executors.diskIO().execute {
+                                    CountryDao.saveCountryDetails(result.country.toCountry())
                                     AirportDetailsDao.saveAirportDetails(result.toAirportDetails())
-//                                    AirportDetailsDao.
-                            }
+                                    CityDao.saveCityDetails(result.city.toCityDetails())
+                                    LocationDao.saveLocationDetails(result.location.toLocation())
+                                    RegionDao.saveRegionDetails(result.region.toRegion())
+                                }
                             }
                         }
                         Log.d("API_CALL", response.body().toString())

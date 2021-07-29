@@ -1,12 +1,13 @@
 package com.tomoliverchua.testapp.db.dao
 
 import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.tomoliverchua.testapp.models.AirpotDetailsEntity
 import com.tomoliverchua.testapp.models.CityEntity
-
+@Dao
 interface cityDao {
     @Query("SELECT * FROM tbl_city")
     fun getCityDetails(): LiveData<MutableList<CityEntity>>

@@ -19,6 +19,10 @@ class TestApplication: Application() {
             single(named("appDatabase")) { AppDatabase.getInstance(get()) }
             single { AirportDetailRepository(get()) }
             single { AppDatabase.getInstance(get()).airportDetailsDao() }
+            single { AppDatabase.getInstance(get()).cityDao() }
+            single { AppDatabase.getInstance(get()).countryDao() }
+            single { AppDatabase.getInstance(get()).locationDao() }
+            single { AppDatabase.getInstance(get()).regionDao() }
             single { AppExecutors() }
         }
 

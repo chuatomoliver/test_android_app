@@ -35,12 +35,27 @@ class DataResponse : ArrayList<DataResponse.AirpotDetails>(){
             val cityCode: String = "",
             val cityName: String = "",
             val timeZoneName: String = ""
-        )
+        ){
+            fun toCityDetails() : CityEntity{
+                return CityEntity(
+                    cityCode,
+                    cityName,
+                    timeZoneName
+                )
+            }
+        }
 
         data class Country(
             val countryCode: String = "",
             val countryName: String = ""
-        )
+        ){
+            fun toCountry() : CountryEntity{
+                return CountryEntity(
+                    countryCode,
+                    countryName
+                )
+            }
+        }
 
         data class Location(
             val aboveSeaLevel: Int = 0,
@@ -50,11 +65,30 @@ class DataResponse : ArrayList<DataResponse.AirpotDetails>(){
             val longitude: Double = 0.0,
             val longitudeDirection: String = "",
             val longitudeRadius: Double = 0.0
-        )
+        ){
+            fun toLocation() : LocationEntity{
+                return LocationEntity(
+                    aboveSeaLevel,
+                    latitude,
+                    latitudeDirection,
+                    latitudeRadius,
+                    longitude,
+                    longitudeDirection,
+                    longitudeRadius
+                )
+            }
+        }
 
         data class Region(
             val regionCode: String = "",
             val regionName: String = ""
-        )
+        ) {
+            fun toRegion(): RegionEntity {
+                return RegionEntity(
+                    regionCode,
+                    regionName
+                )
+            }
+        }
     }
 }

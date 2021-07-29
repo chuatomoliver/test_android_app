@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.tomoliverchua.testapp.common.DATABASE_NAME
-import com.tomoliverchua.testapp.db.dao.airportDetailsDao
+import com.tomoliverchua.testapp.db.dao.*
 import com.tomoliverchua.testapp.models.*
 
 
@@ -17,7 +17,10 @@ import com.tomoliverchua.testapp.models.*
  abstract class AppDatabase : RoomDatabase() {
 
     abstract fun airportDetailsDao(): airportDetailsDao
-
+    abstract fun cityDao(): cityDao
+    abstract fun countryDao(): countryDao
+    abstract fun locationDao(): locationDao
+    abstract fun regionDao(): regionDao
 
     companion object {
 
