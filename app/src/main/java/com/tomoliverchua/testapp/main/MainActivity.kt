@@ -4,24 +4,19 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
 import com.tomoliverchua.testapp.R
-import java.text.SimpleDateFormat
-import java.util.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
-import com.tomoliverchua.testapp.models.DataResponse
 import com.google.android.material.navigation.NavigationView
-import com.tomoliverchua.testapp.common.AIRPORT_DETAILS
+import com.tomoliverchua.testapp.utils.AIRPORT_DETAILS
 import com.tomoliverchua.testapp.details.DetailsActivity
 import com.tomoliverchua.testapp.models.AirpotDetailsEntity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_nav.view.*
-import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
     OnSelectRouteCallback {

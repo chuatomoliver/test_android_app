@@ -1,7 +1,7 @@
 package com.tomoliverchua.testapp
 
 import android.app.Application
-import com.tomoliverchua.testapp.common.AppExecutors
+import com.tomoliverchua.testapp.utils.AppExecutors
 import com.tomoliverchua.testapp.repositories.AirportDetailRepository
 import com.tomoliverchua.testapp.repositories.DetailsActivityRepository
 import org.koin.android.ext.koin.androidContext

@@ -2,7 +2,7 @@ package com.tomoliverchua.testapp.repositories
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import com.tomoliverchua.testapp.common.AppExecutors
+import com.tomoliverchua.testapp.utils.AppExecutors
 import com.tomoliverchua.testapp.db.dao.*
 import com.tomoliverchua.testapp.models.*
 import org.koin.core.KoinComponent

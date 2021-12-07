@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.tomoliverchua.testapp.common.DATABASE_NAME
+import com.tomoliverchua.testapp.utils.DATABASE_NAME
 import com.tomoliverchua.testapp.db.dao.*
 import com.tomoliverchua.testapp.models.*
 

@@ -1,6 +1,6 @@
 package com.tomoliverchua.testapp.apiservices
 
-import com.tomoliverchua.testapp.common.API_URL
+import com.tomoliverchua.testapp.utils.API_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

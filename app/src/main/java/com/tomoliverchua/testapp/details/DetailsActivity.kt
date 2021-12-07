@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.tomoliverchua.testapp.R
-import com.tomoliverchua.testapp.common.AIRPORT_DETAILS
+import com.tomoliverchua.testapp.utils.AIRPORT_DETAILS
 import com.tomoliverchua.testapp.models.AirpotDetailsEntity
 import kotlinx.android.synthetic.main.activity_movie_details.*
 

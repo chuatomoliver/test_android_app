@@ -5,11 +5,14 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.tomoliverchua.testapp.apiservices.AirportService
 import com.tomoliverchua.testapp.apiservices.APIClient
-import com.tomoliverchua.testapp.common.AppExecutors
+import com.tomoliverchua.testapp.utils.AppExecutors
 import com.tomoliverchua.testapp.db.dao.*
 import com.tomoliverchua.testapp.models.AirpotDetailsEntity
 import com.tomoliverchua.testapp.models.DataResponse
 import com.tomoliverchua.testapp.repoCallback.AiportDetailsCallback
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import retrofit2.Call
@@ -40,14 +43,16 @@ class AirportDetailRepository(context: Context) : KoinComponent {
                         response.body()?.let {
                             callback.onSuccess(it)
                             it.forEach{result->
-                                    executors.diskIO().execute {
+//                                    executors.diskIO().execute {
+                                    CoroutineScope(IO).launch {
+                                        AirportDetailsDao.saveAirportDetails(result.toAirportDetails())
+                                        CityDao.saveCityDetails(result.city.toCityDetails())
+                                        LocationDao.saveLocationDetails(result.location.toLocation())
+                                        RegionDao.saveRegionDetails(result.region.toRegion())
+                                        CountryDao.saveCountryDetails(result.country.toCountry())
+                                    }
 
-                                    AirportDetailsDao.saveAirportDetails(result.toAirportDetails())
-                                    CityDao.saveCityDetails(result.city.toCityDetails())
-                                    LocationDao.saveLocationDetails(result.location.toLocation())
-                                    RegionDao.saveRegionDetails(result.region.toRegion())
-                                    CountryDao.saveCountryDetails(result.country.toCountry())
-                                }
+//                                }
                             }
                         }
                         Log.d("API_CALL", response.body().toString())

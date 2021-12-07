@@ -1,4 +1,4 @@
-package com.tomoliverchua.testapp.common
+package com.tomoliverchua.testapp.utils
 
 const val API_URL = "https://api.qantas.com/"
 

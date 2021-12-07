@@ -1,4 +1,4 @@
-package com.tomoliverchua.testapp.common
+package com.tomoliverchua.testapp.utils
 
 import android.os.Handler
 import android.os.Looper
